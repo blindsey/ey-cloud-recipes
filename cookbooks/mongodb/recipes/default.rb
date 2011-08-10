@@ -8,6 +8,10 @@ case node[:kernel][:machine]
 when "i686"
   # Do nothing, you should never run MongoDB in a i686/i386 environment it will damage your data.
 else
+  ey_cloud_report "mongodb" do
+    message "mongodb rox"
+  end
+
   if (['db_master','solo'].include?(@node[:instance_role]) &&  @node[:mongo_utility_instances].length < 3)
     require_recipe "mongodb::install"
     require_recipe "mongodb::configure"
