@@ -31,12 +31,12 @@ bash "install nodejs from source" do
   cwd "/usr/local/src"
   user "root"
   code <<-EOH
-    wget http://nodejs.org/dist/node-v#{node[:nodejs][:version]}.tar.gz && \
-    tar zxf node-v#{node[:nodejs][:version]}.tar.gz && \
-    cd node-v#{node[:nodejs][:version]} && \
-    ./configure --prefix=#{node[:nodejs][:dir]} && \
+    wget http://nodejs.org/dist/node-v#{@node[:nodejs_version]}.tar.gz && \
+    tar zxf node-v#{@node[:nodejs_version]}.tar.gz && \
+    cd node-v#{@node[:nodejs_version]} && \
+    ./configure --prefix=#{@node[:nodejs_dir]} && \
     make && \
     make install
   EOH
-  not_if "#{node[:nodejs][:dir]}/bin/node -v 2>&1 | grep 'v#{node[:nodejs][:version]}'"
+  not_if "#{@node[:nodejs_dir]}/bin/node -v 2>&1 | grep 'v#{@node[:nodejs_version]}'"
 end
