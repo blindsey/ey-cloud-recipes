@@ -8,6 +8,8 @@ case node[:kernel][:machine]
 when "i686"
   # Do nothing, you should never run MongoDB in a i686/i386 environment it will damage your data.
 else
+  p @node
+
   ey_cloud_report "mongodb" do
     message "mongodb rox"
   end
