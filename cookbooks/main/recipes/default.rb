@@ -55,3 +55,4 @@
 #require_recipe "mysql_administrative_tools"
 
 require_recipe "mongodb"
+require_recipe "nodejs::npm"
